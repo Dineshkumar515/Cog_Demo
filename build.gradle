@@ -1,0 +1,68 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'org.springframework.boot' version '2.7.10'
+	id 'war'
+	id 'application'
+	id 'com.bmuschko.cargo' version '2.6.1'
+	
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//implementation 'org.springdoc:springdoc-openapi-ui'
+	/*<dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.6.15</version> 
+   </dependency>*/
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
+/////////// WAR FILE SETUP ////////////////////////////////////////////////////////////
+
+/*def warfilepath = './build/libs/' + war.archiveName
+
+def urlTomcat = project.hasProperty('SERVERHOSTIP') ? project.getProperty('SERVERHOSTIP') : "localhost"
+def urlUser = project.hasProperty('SERVERUSER') ? project.getProperty('SERVERUSER') : "admin"
+def urlPassword = project.hasProperty('SERVERPWD') ? project.getProperty('SERVERPWD') : "admin"
+def urlProtocol = project.hasProperty('SERVERPROTOCOL') ? project.getProperty('SERVERPROTOCOL') : "http"
+def urlVersion = project.hasProperty('SERVERVERSION') ? project.getProperty('SERVERVERSION') : "tomcat9x"
+def urlTomcatPort = project.hasProperty('SERVERPORT') ? project.getProperty('SERVERPORT') : "80"
+def urlTomcatPortInt = urlTomcatPort.toInteger()
+
+cargoRedeployRemote.dependsOn assemble 
+ 
+cargo {
+    containerId = urlVersion
+    
+    deployable {
+        file = file(warfilepath)
+    }
+    
+    remote {
+        hostname = urlTomcat
+        port= urlTomcatPortInt
+        username = urlUser
+        password = urlPassword
+        protocol = urlProtocol
+    }   
+}
+*/
