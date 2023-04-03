@@ -1,0 +1,55 @@
+openapi: 3.0.0
+servers:
+  - description: Customer API
+    url: http://localhost:8080
+info:
+  description: "CRUD Operations for customer"
+  version: "1.0.0"
+  title: "Employee API"
+  contact:
+    email: "dineshn0841@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+paths:
+  /getemployees:
+    get:
+      summary: "Get Employee Details"
+      operationId: "getCustomerById"
+      description: |
+        Greet a customer
+      parameters:
+        - name: name
+          in: query
+          description: "Employee"
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Employee Detail"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+
+        "404":
+          description: "Unable to find the Employee"
+
+components:
+  schemas:
+    Employee:
+      type: object
+      required:
+        - id
+        - content
+      properties:
+        firstName:
+          type: string
+          example: "Dinesh"
+        lastName:
+          type: string
+          example: "kumar"
+        email:
+          type: string
+          example: "dinesh@gmail.com"
