@@ -5,10 +5,10 @@ WORKDIR $HOME
 ADD . $HOME
 RUN chmod +x gradlew
 RUN ./gradlew --version
-RUN ./gradlew build -x test
+RUN ./gradlew bootJar
 RUN echo $JAVA_HOME
 FROM eclipse-temurin:17-jdk-jammy
-COPY --from=build /usr/app/build/libs/demo-0.0.1-SNAPSHOT-plain.jar /app/demo-0.0.1-SNAPSHOT-plain.jar
+COPY --from=build /usr/app/build/libs/demo-0.0.1-SNAPSHOT.jar /app/demo-0.0.1-SNAPSHOT.jar
 
  
 
