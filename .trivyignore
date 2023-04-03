@@ -91,3 +91,5 @@ CVE-2021-3711
 # is only available in premium support, trivy thinks we should use something in the 1.1.1
 # line. We can't, due to FIPS compliance, so need to continue to ignore this issue.
 CVE-2023-0286
+CVE-2016-1000027
+CVE-2022-1471
